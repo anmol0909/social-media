@@ -1,7 +1,13 @@
 <div style="background: lightgrey; width: 300px; padding: 10px;">
-  <%= post.body %>
+
+  <%= turbo_frame_tag dom_id(post) do %>
+    <%= post.body %><br>
+    <%= post.likes %>
   <br>
-  <%= link_to :edit, edit_post_path(post) %>
-  <%= button_to "likes (#{post.likes || 0})", post_path(post, like: true), method: :put %>
+    <%= link_to :edit, edit_post_path(post) %>
+  <% end %>
+
+
+  <%#= button_to "likes (#{post.likes || 0})", post_path(post, like: true), method: :put %>
 </div>
 <br>
